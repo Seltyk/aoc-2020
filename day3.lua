@@ -65,3 +65,4 @@ for i = 1, #jumps, 2 do
 end
 
 print(accum)
+
