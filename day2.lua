@@ -1,5 +1,5 @@
 #!/bin/lua5.4
-local f, pwds = assert(io.open("day2", 'r')), 0
+local f <close>, pwds = assert(io.open("day2", 'r')), 0
 for line in f:lines() do
 	local low, high, letter, pass = line:match "^(%d+)-(%d+) (%a): (%a+)$"
 	low, high = tonumber(low), tonumber(high)
