@@ -27,6 +27,7 @@ f:read('l') --to start top-left, the first line must be read in advance
 --- @param start	integer	which column to begin at
 --- @param n		integer	how much to rotate per call
 --- @param m		integer	how many lines to jump
+--- @return true if there is a tree in the resultant position, false otherwise
 function fmti.tobog(file, start, n, m)
 	local pos = start --make a closure for the current column in the line
 	return function()
@@ -45,7 +46,7 @@ function fmti.tobog(file, start, n, m)
 			--]]
 			pos = modoff(pos + n, #line, 1)
 			--]=]
-			return line, pos
+			return line:sub(pos, pos) == '#'
 		end
 	end
 end
@@ -53,8 +54,8 @@ end
 local accum = 1
 for i = 1, #jumps, 2 do
 	local trees = 0
-	for line, pos in f:tobog(1, jumps[i], jumps[i + 1]) do
-		if line:sub(pos, pos) == '#' then trees = trees + 1 end
+	for tree in f:tobog(1, jumps[i], jumps[i + 1]) do
+		if tree then trees = trees + 1 end
 	end
 
 	--reset to the first line
