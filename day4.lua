@@ -18,9 +18,10 @@ for line in input:gmatch(".-\n") do
 	--Fill in the current passport
 	local passport = {}
 	for key, value in line:gmatch("(%a%a%a):([^%s]+)") do
-		passport[key] = true
+		passport[key] = value
 	end
 
+	--Ensure every required entry is there
 	for _, entry in ipairs(entries) do
 		if not passport[entry] then goto invalid end
 	end
