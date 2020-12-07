@@ -8,8 +8,8 @@ local f = assert(io.open("day4", 'r'))
 local input = f:read('a')
 f:close(); f = nil
 
---Standardize format: separate passports with LF, separate key:value pairs with single whitespace
-input = input:gsub("\n\n", '\0'):gsub('\n', ' '):gsub("%s%s+", ' '):gsub('\0+', '\n')
+--Standardize format: separate passports with LF, separate key:value pairs with single whitespace. Ensure final LF
+input = input:gsub("\n\n", '\0'):gsub('\n', ' '):gsub("%s%s+", ' '):gsub('\0+', '\n') .. '\n'
 
 --Loop over the lines and count valid passports
 local valid = 0
