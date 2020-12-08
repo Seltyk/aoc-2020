@@ -59,8 +59,6 @@ for group in input:gmatch("(.-\n)\n") do
 		list:insert(curr)
 	end
 
-	assert(#list >= 1, "How? What?")
-
 	--Merge the group depending on part 1 or 2
 	local merge = list[1]
 	for i = 2, #list do
