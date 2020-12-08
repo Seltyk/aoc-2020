@@ -16,8 +16,8 @@ for seat in f:lines() do
 end
 
 if arg[1] == '2' then
-	for id = 1, 2046 do
-		if not out[id] and out[id - 1] and out[id + 1] then
+	for id = 2, 2046 do
+		if not out[id] and out[id - 1] then
 			out = id
 			break
 		end
