@@ -46,7 +46,7 @@ function fmti.tobog(file, start, n, m)
 			--]]
 			pos = modoff(pos + n, #line, 1)
 			--]=]
-			return line:sub(pos, pos) == '#'
+			return line:sub(pos, pos) == '#' and 1 or 0
 		end
 	end
 end
@@ -55,7 +55,7 @@ local accum = 1
 for i = 1, #jumps, 2 do
 	local trees = 0
 	for tree in f:tobog(1, jumps[i], jumps[i + 1]) do
-		if tree then trees = trees + 1 end
+		trees = trees + tree
 	end
 
 	--reset to the first line
